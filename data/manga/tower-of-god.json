@@ -1,0 +1,26 @@
+{
+  "slug": "tower-of-god",
+  "title": "Tower of God",
+  "alternativeTitle": "신의 탑",
+  "cover": "https://picsum.photos/seed/towerofgod/400/560",
+  "author": "SIU",
+  "status": "ongoing",
+  "type": "manhwa",
+  "synopsis": "Apa yang kau inginkan? Uang? Kemuliaan? Kekuasaan? Balas dendam? Atau sesuatu yang melampaui semuanya? Apapun yang kau inginkan, \"ada di sini\". Menara Tuhan. Seorang anak laki-laki bernama Twenty-Fifth Bam memasuki Menara misterius untuk mengejar teman satu-satunya, Rachel. Apakah Bam akan berhasil menavigasi setiap lantai Menara yang berbahaya dan menemukan Rachel, atau akankah Menara mengakhiri perjalanannya sebelum dimulai?",
+  "genres": ["Action", "Adventure", "Fantasy", "Mystery"],
+  "releaseYear": 2010,
+  "rating": 4.6,
+  "createdAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-05-17T08:00:00Z",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Lantai 1 - Headon",
+      "releaseDate": "2024-01-15T00:00:00Z",
+      "pages": [
+        "https://picsum.photos/seed/tower1/800/1200",
+        "https://picsum.photos/seed/tower2/800/1200"
+      ]
+    }
+  ]
+}

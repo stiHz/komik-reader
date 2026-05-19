@@ -1,0 +1,27 @@
+{
+  "slug": "demon-slayer",
+  "title": "Demon Slayer: Kimetsu no Yaiba",
+  "alternativeTitle": "鬼滅の刃",
+  "cover": "https://picsum.photos/seed/demonslayer/400/560",
+  "author": "Koyoharu Gotouge",
+  "status": "completed",
+  "type": "manga",
+  "synopsis": "Tanjirou Kamado adalah seorang anak laki-laki baik hati yang hidup bahagia bersama keluarganya di pegunungan. Suatu hari, sekembalinya dari menjual arang, ia menemukan keluarganya dibantai oleh iblis. Satu-satunya yang selamat adalah adik perempuannya, Nezuko, yang telah berubah menjadi iblis. Meskipun begitu, Nezuko masih menunjukkan tanda-tanda emosi dan pikiran manusia. Bertekad untuk membalaskan dendam keluarganya dan menyembuhkan Nezuko, Tanjirou memulai perjalanan menjadi Pembasmi Iblis.",
+  "genres": ["Action", "Supernatural", "Historical", "Drama", "Adventure"],
+  "releaseYear": 2016,
+  "rating": 4.8,
+  "createdAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-05-19T10:00:00Z",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Kekejaman",
+      "releaseDate": "2024-06-01T00:00:00Z",
+      "pages": [
+        "https://picsum.photos/seed/demon1/800/1200",
+        "https://picsum.photos/seed/demon2/800/1200",
+        "https://picsum.photos/seed/demon3/800/1200"
+      ]
+    }
+  ]
+}

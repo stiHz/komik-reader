@@ -1,0 +1,28 @@
+{
+  "slug": "one-punch-man",
+  "title": "One Punch Man",
+  "alternativeTitle": "ワンパンマン",
+  "cover": "https://picsum.photos/seed/onepunch/400/560",
+  "author": "ONE",
+  "artist": "Yusuke Murata",
+  "status": "ongoing",
+  "type": "manga",
+  "synopsis": "Saitama adalah pahlawan yang hanya menjadi pahlawan untuk bersenang-senang. Setelah tiga tahun \"latihan spesial\", ia menjadi sangat kuat hingga bisa mengalahkan musuh apapun dengan satu pukulan. Sayangnya, karena terlalu kuat, Saitama kini bosan karena tidak ada lagi tantangan. Ikuti keseharian Saitama yang absurd bersama muridnya, Genos, dalam dunia penuh monster dan asosiasi pahlawan!",
+  "genres": ["Action", "Comedy", "Superhero", "Sci-Fi"],
+  "releaseYear": 2012,
+  "rating": 4.7,
+  "createdAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-05-15T06:00:00Z",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Satu Pukulan",
+      "releaseDate": "2024-04-01T00:00:00Z",
+      "pages": [
+        "https://picsum.photos/seed/opm1/800/1200",
+        "https://picsum.photos/seed/opm2/800/1200",
+        "https://picsum.photos/seed/opm3/800/1200"
+      ]
+    }
+  ]
+}

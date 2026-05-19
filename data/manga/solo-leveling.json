@@ -1,0 +1,40 @@
+{
+  "slug": "solo-leveling",
+  "title": "Solo Leveling",
+  "alternativeTitle": "나 혼자만 레벨업, Only I Level Up",
+  "cover": "https://picsum.photos/seed/sololeveling/400/560",
+  "author": "Chugong",
+  "artist": "Jang Sung-rak (Dubu)",
+  "status": "completed",
+  "type": "manhwa",
+  "synopsis": "10 tahun yang lalu, setelah \"Gerbang\" yang menghubungkan dunia nyata dengan dunia monster terbuka, beberapa orang biasa mendapatkan kekuatan untuk berburu monster di dalam Gerbang. Mereka dikenal sebagai \"Hunter\". Namun, tidak semua Hunter kuat. Nama saya Sung Jin-Woo, seorang Hunter peringkat E. Saya adalah seseorang yang harus mempertaruhkan nyawanya di dungeon terendah, \"Terlemah di Dunia\". Tanpa memiliki keterampilan super, saya hampir tidak bisa mendapatkan uang dengan berjuang di dungeon rendah... setidaknya sampai saya menemukan dungeon tersembunyi dengan kesulitan tersulit di dalam Dungeon peringkat D! Pada akhirnya, saat saya menerima kematian, tiba-tiba saya menerima kekuatan aneh, log pencarian yang hanya bisa saya lihat, sebuah rahasia untuk menaikkan level yang hanya diketahui oleh saya! Jika saya berlatih sesuai dengan misi dan quest saya, saya akan naik level. Berubah dari Hunter terlemah menjadi Hunter peringkat S terkuat!",
+  "genres": ["Action", "Adventure", "Fantasy", "Supernatural"],
+  "releaseYear": 2018,
+  "rating": 4.9,
+  "createdAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-05-18T12:00:00Z",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Hunter Peringkat E",
+      "releaseDate": "2024-03-01T00:00:00Z",
+      "pages": [
+        "https://picsum.photos/seed/solo1/800/1200",
+        "https://picsum.photos/seed/solo2/800/1200",
+        "https://picsum.photos/seed/solo3/800/1200",
+        "https://picsum.photos/seed/solo4/800/1200",
+        "https://picsum.photos/seed/solo5/800/1200"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Dungeon Tersembunyi",
+      "releaseDate": "2024-03-07T00:00:00Z",
+      "pages": [
+        "https://picsum.photos/seed/solo6/800/1200",
+        "https://picsum.photos/seed/solo7/800/1200",
+        "https://picsum.photos/seed/solo8/800/1200"
+      ]
+    }
+  ]
+}

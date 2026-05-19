@@ -1,0 +1,28 @@
+{
+  "slug": "jujutsu-kaisen",
+  "title": "Jujutsu Kaisen",
+  "alternativeTitle": "呪術廻戦, Sorcery Fight",
+  "cover": "https://picsum.photos/seed/jujutsu/400/560",
+  "author": "Gege Akutami",
+  "status": "ongoing",
+  "type": "manga",
+  "synopsis": "Yuuji Itadori adalah siswa SMA dengan kekuatan fisik yang luar biasa. Suatu hari, untuk menyelamatkan temannya dari serangan Kutukan, ia memakan jari Ryomen Sukuna, Raja Kutukan, dan membawa kutukan itu ke dalam jiwanya sendiri. Sekarang, ia harus mengumpulkan semua jari Sukuna yang tersebar sambil bertarung melawan iblis-iblis kuat sebagai murid SMA Jujutsu Tokyo.",
+  "genres": ["Action", "Supernatural", "Horror", "School"],
+  "releaseYear": 2018,
+  "rating": 4.7,
+  "createdAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-05-19T14:00:00Z",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Ryomen Sukuna",
+      "releaseDate": "2024-09-01T00:00:00Z",
+      "pages": [
+        "https://picsum.photos/seed/jjk1/800/1200",
+        "https://picsum.photos/seed/jjk2/800/1200",
+        "https://picsum.photos/seed/jjk3/800/1200",
+        "https://picsum.photos/seed/jjk4/800/1200"
+      ]
+    }
+  ]
+}

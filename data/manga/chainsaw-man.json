@@ -1,0 +1,27 @@
+{
+  "slug": "chainsaw-man",
+  "title": "Chainsaw Man",
+  "alternativeTitle": "チェンソーマン",
+  "cover": "https://picsum.photos/seed/chainsaw/400/560",
+  "author": "Tatsuki Fujimoto",
+  "status": "ongoing",
+  "type": "manga",
+  "synopsis": "Denji adalah seorang pemuda miskin yang melakukan apapun demi uang, termasuk berburu iblis dengan anjing iblis kesayangannya, Pochita. Dia hanyalah seorang remaja yang hidupnya sengsara, sampai suatu hari ia dikhianati dan dibunuh. Saat nyawanya akan berakhir, Pochita menyatu dengannya dan memberinya kekuatan baru — kemampuan untuk mengubah bagian tubuhnya menjadi gergaji mesin. Sekarang sebagai Chainsaw Man, Denji bekerja untuk Biro Keamanan Publik melawan iblis-iblis paling berbahaya.",
+  "genres": ["Action", "Horror", "Supernatural", "Dark Fantasy"],
+  "releaseYear": 2018,
+  "rating": 4.8,
+  "createdAt": "2026-01-01T00:00:00Z",
+  "updatedAt": "2026-05-18T18:00:00Z",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Anjing & Gergaji Mesin",
+      "releaseDate": "2024-11-01T00:00:00Z",
+      "pages": [
+        "https://picsum.photos/seed/cs1/800/1200",
+        "https://picsum.photos/seed/cs2/800/1200",
+        "https://picsum.photos/seed/cs3/800/1200"
+      ]
+    }
+  ]
+}
