@@ -12,22 +12,37 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useReadingHistory } from "@/hooks/useReadingHistory";
 
 interface ReaderViewProps {
   chapter: Chapter;
   mangaSlug: string;
   totalChapters: number;
+  mangaTitle: string;
+  mangaCover: string;
 }
 
 type ReadMode = "scroll" | "single";
 
-export function ReaderView({ chapter, mangaSlug, totalChapters }: ReaderViewProps) {
+export function ReaderView({
+  chapter,
+  mangaSlug,
+  totalChapters,
+  mangaTitle,
+  mangaCover,
+}: ReaderViewProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [readMode, setReadMode] = useState<ReadMode>("scroll");
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { markAsRead } = useReadingHistory();
 
   const prevChapter = chapter.number > 1 ? chapter.number - 1 : null;
   const nextChapter = chapter.number < totalChapters ? chapter.number + 1 : null;
+
+  // Mark chapter as read when page loads
+  useEffect(() => {
+    markAsRead(mangaSlug, mangaTitle, mangaCover, chapter.number, chapter.title);
+  }, [mangaSlug, mangaTitle, mangaCover, chapter.number, chapter.title, markAsRead]);
 
   // Keyboard navigation
   const handleKeyDown = useCallback(

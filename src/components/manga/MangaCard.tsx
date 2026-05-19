@@ -2,6 +2,7 @@ import { Manga } from "@/types";
 import { cn } from "@/lib/utils";
 import { Star, Bookmark } from "lucide-react";
 import Link from "next/link";
+import { useReadingHistory } from "@/hooks/useReadingHistory";
 
 interface MangaCardProps {
   manga: Manga;
@@ -9,6 +10,9 @@ interface MangaCardProps {
 }
 
 export function MangaCard({ manga, className }: MangaCardProps) {
+  const { getProgress } = useReadingHistory();
+  const progress = getProgress(manga.slug);
+
   return (
     <Link href={`/manga/${manga.slug}`} className="group block">
       <div className={cn("space-y-2", className)}>
@@ -53,9 +57,15 @@ export function MangaCard({ manga, className }: MangaCardProps) {
           <h3 className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
             {manga.title}
           </h3>
-          <p className="text-xs text-muted-foreground">
-            Ch. {manga.chapters.length > 0 ? manga.chapters[0].number : "N/A"}
-          </p>
+          {progress ? (
+            <p className="text-xs text-primary font-medium">
+              Lanjut Ch. {progress.chapterNumber}
+            </p>
+          ) : (
+            <p className="text-xs text-muted-foreground">
+              Ch. {manga.chapters.length > 0 ? manga.chapters[0].number : "N/A"}
+            </p>
+          )}
         </div>
       </div>
     </Link>

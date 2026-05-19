@@ -31,6 +31,8 @@ export default function ChapterPage({ params }: PageProps) {
       chapter={chapter}
       mangaSlug={manga.slug}
       totalChapters={manga.chapters.length}
+      mangaTitle={manga.title}
+      mangaCover={manga.cover}
     />
   );
 }

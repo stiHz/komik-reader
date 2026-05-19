@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Search, Menu, X, BookOpen } from "lucide-react";
+import { Search, Menu, X, BookOpen, History } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -39,6 +39,10 @@ export function Header() {
           </Link>
           <Link href="/genre" className="text-sm hover:text-primary transition-colors">
             Genre
+          </Link>
+          <Link href="/riwayat" className="text-sm hover:text-primary transition-colors flex items-center gap-1">
+            <History className="w-3.5 h-3.5" />
+            Riwayat
           </Link>
         </nav>
 
@@ -110,6 +114,10 @@ export function Header() {
           </Link>
           <Link href="/genre" className="text-sm hover:text-primary py-1" onClick={() => setMenuOpen(false)}>
             Genre
+          </Link>
+          <Link href="/riwayat" className="text-sm hover:text-primary py-1 flex items-center gap-1" onClick={() => setMenuOpen(false)}>
+            <History className="w-3.5 h-3.5" />
+            Riwayat
           </Link>
         </nav>
       </div>
