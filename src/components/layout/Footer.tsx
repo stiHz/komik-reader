@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <BookOpen className="w-4 h-4 text-primary" />
-            <span>KomikReader</span>
+            <span>KomikDer</span>
           </Link>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
@@ -17,7 +17,7 @@ export function Footer() {
           </div>
 
           <p className="text-xs text-muted-foreground flex items-center gap-1">
-            © {new Date().getFullYear()} KomikReader — Made with <Heart className="w-3 h-3 text-primary fill-primary" />
+            © {new Date().getFullYear()} KomikDer — Made with <Heart className="w-3 h-3 text-primary fill-primary" />
           </p>
         </div>
       </div>

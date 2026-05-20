@@ -23,7 +23,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-lg hover:text-primary transition-colors">
           <BookOpen className="w-6 h-6 text-primary" />
-          <span>KomikReader</span>
+          <span>KomikDer</span>
         </Link>
 
         {/* Desktop Nav */}

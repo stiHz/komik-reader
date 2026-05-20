@@ -5,8 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "KomikReader - Baca Komik Online",
-    template: "%s - KomikReader",
+    default: "KomikDer - Baca Komik Online",
+    template: "%s - KomikDer",
   },
   description: "Platform baca komik online terbaru dan terlengkap",
 };

@@ -44,7 +44,7 @@ export default function HomePage({ searchParams }: PageProps) {
       <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary/20 via-primary/10 to-background p-6 md:p-10">
         <div className="max-w-2xl">
           <h1 className="text-2xl md:text-4xl font-bold tracking-tight">
-            KomikReader 🐧
+            KomikDer 🐧
           </h1>
           <p className="mt-3 text-muted-foreground">
             Baca komik terbaru favoritmu secara online. Update setiap hari dengan koleksi lengkap manga, manhwa, dan manhua.

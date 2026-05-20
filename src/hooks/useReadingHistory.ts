@@ -24,7 +24,7 @@ interface HistoryMap {
   };
 }
 
-const STORAGE_KEY = "komik-reader-history";
+const STORAGE_KEY = "komikder-history";
 
 function loadHistory(): HistoryMap {
   try {
