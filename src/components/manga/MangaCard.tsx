@@ -1,3 +1,5 @@
+"use client";
+
 import { Manga } from "@/types";
 import { cn } from "@/lib/utils";
 import { Star, Bookmark } from "lucide-react";
