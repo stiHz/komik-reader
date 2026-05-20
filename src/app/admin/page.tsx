@@ -14,9 +14,65 @@ import {
   XCircle,
   Loader2,
   LogOut,
+  Upload,
+  Image,
 } from "lucide-react";
 
 const API = "/api/admin/manga";
+
+// Cloudinary config (set via Netlify env vars NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME & NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET)
+const CLOUD_NAME = ""; // will be read from env
+const UPLOAD_PRESET = ""; // will be read from env
+
+type CloudinaryWidget = {
+  open: () => void;
+  close: () => void;
+};
+
+function openCloudinaryUpload(
+  options: { multiple?: boolean; folder?: string; onSuccess: (urls: string[]) => void }
+) {
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || CLOUD_NAME;
+  const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || UPLOAD_PRESET;
+
+  if (!cloudName || !uploadPreset) {
+    alert("Cloudinary belum disetup! Tambah NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME dan NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET di Netlify env vars.");
+    return;
+  }
+
+  const widget = (window as any).cloudinary?.createUploadWidget(
+    {
+      cloudName,
+      uploadPreset,
+      multiple: options.multiple ?? false,
+      maxFiles: options.multiple ? 50 : 1,
+      folder: options.folder || "komikder",
+      clientAllowedFormats: ["jpg", "jpeg", "png", "webp"],
+      maxFileSize: 10000000, // 10MB
+      sources: ["local", "url", "camera"],
+    },
+    (error: any, result: any) => {
+      if (result?.event === "success") {
+        const urls = result.info?.secure_url ? [result.info.secure_url] : [];
+        if (urls.length > 0) options.onSuccess(urls);
+      }
+    }
+  ) as CloudinaryWidget;
+  widget.open();
+}
+
+function loadCloudinaryScript(): Promise<void> {
+  return new Promise((resolve) => {
+    if ((window as any).cloudinary) {
+      resolve();
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://upload-widget.cloudinary.com/global/all.js";
+    script.onload = () => resolve();
+    document.head.appendChild(script);
+  });
+}
 
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
@@ -442,13 +498,32 @@ export default function AdminPage() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium mb-1 block">Cover URL</label>
-                <input
-                  value={form.cover}
-                  onChange={(e) => setForm({ ...form, cover: e.target.value })}
-                  className="w-full h-10 px-3 rounded-lg bg-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="https://..."
-                />
+                <label className="text-sm font-medium mb-1 block">Cover</label>
+                <div className="flex gap-2">
+                  <input
+                    value={form.cover}
+                    onChange={(e) => setForm({ ...form, cover: e.target.value })}
+                    className="flex-1 h-10 px-3 rounded-lg bg-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="https://... atau upload"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      loadCloudinaryScript().then(() => {
+                        openCloudinaryUpload({
+                          folder: "komikder/covers",
+                          onSuccess: (urls) => setForm({ ...form, cover: urls[0] }),
+                        });
+                      });
+                    }}
+                    className="flex items-center gap-1.5 px-3 h-10 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground text-sm transition-colors"
+                  >
+                    <Upload className="w-4 h-4" />
+                  </button>
+                </div>
+                {form.cover && (
+                  <img src={form.cover} className="mt-2 h-20 rounded object-cover" alt="preview" />
+                )}
               </div>
               <div>
                 <label className="text-sm font-medium mb-1 block">Author *</label>
@@ -598,13 +673,33 @@ export default function AdminPage() {
             </div>
 
             <div>
-              <label className="text-sm font-medium mb-1 block">URL Gambar (1 per baris)</label>
+              <label className="text-sm font-medium mb-1 block">Gambar Chapter</label>
               <textarea
                 value={chForm.pages}
                 onChange={(e) => setChForm({ ...chForm, pages: e.target.value })}
                 className="w-full h-32 px-3 py-2 rounded-lg bg-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-y font-mono"
-                placeholder="https://example.com/page1.jpg&#10;https://example.com/page2.jpg&#10;https://example.com/page3.jpg"
+                placeholder="https://example.com/page1.jpg&#10;https://example.com/page2.jpg&#10;atau klik Upload untuk pilih file"
               />
+              <button
+                type="button"
+                onClick={() => {
+                  loadCloudinaryScript().then(() => {
+                    openCloudinaryUpload({
+                      multiple: true,
+                      folder: `komikder/manga/${chForm.mangaSlug || "unknown"}`,
+                      onSuccess: (urls) => {
+                        const current = chForm.pages.trim();
+                        const newPages = current ? current + "\n" + urls.join("\n") : urls.join("\n");
+                        setChForm({ ...chForm, pages: newPages });
+                      },
+                    });
+                  });
+                }}
+                className="mt-2 flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground text-sm transition-colors"
+              >
+                <Upload className="w-4 h-4" />
+                Upload Gambar (multi)
+              </button>
             </div>
 
             <button
