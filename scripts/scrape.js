@@ -235,6 +235,58 @@ async function scrapeKiryuuChapter(url) {
   return { title, chapterNum, images, total: images.length };
 }
 
+// ====== KOMIKCAST SCRAPER ======
+async function scrapeKomikcastChapter(url) {
+  console.log(`📖 Fetching: ${url}`);
+  const html = await fetchHTML(url);
+  const $ = load(html);
+
+  // Komikcast chapter structure:
+  // Images are in <div class="main-reading-area"> or <div id="reader">
+  const images = [];
+  
+  // Try main-reading-area first
+  $(".main-reading-area img, #reader img, .chapter-content img, .entry-content img").each((i, el) => {
+    const src = $(el).attr("src") || $(el).attr("data-src") || $(el).attr("data-lazy-src");
+    if (src && src.trim()) {
+      let fullSrc = src.trim();
+      if (fullSrc.startsWith("//")) fullSrc = "https:" + fullSrc;
+      if (fullSrc.startsWith("http") && !fullSrc.includes("avatar") && !fullSrc.includes("logo")) {
+        images.push(fullSrc);
+      }
+    }
+  });
+
+  if (images.length === 0) {
+    console.log("❌ Tidak ada gambar ditemukan.");
+    return null;
+  }
+
+  // Get chapter title from page
+  let title = "";
+  const pageTitle = $("title").text().trim();
+  // Komikcast format: "Eleceed Chapter 123 - Title"
+  const titleMatch = pageTitle.match(/Chapter\s*(\d+[.\d]*)\s*[-–]*\s*(.*)/i);
+  if (titleMatch) {
+    title = titleMatch[2] || "";
+  }
+  if (!title) {
+    title = $("h1.entry-title, .chapter-head h1").first().text().trim();
+  }
+
+  // Try to get chapter number
+  let chapterNum = 0;
+  const numMatch = url.match(/chapter[_-]?(\d+[.\d]*)/i) || url.match(/\/(\d+[.\d]*)\/?$/);
+  if (numMatch) {
+    chapterNum = parseFloat(numMatch[1]) || 0;
+  }
+  if (!chapterNum && titleMatch) {
+    chapterNum = parseFloat(titleMatch[1]) || 0;
+  }
+
+  return { title, chapterNum, images, total: images.length };
+}
+
 // ====== MAIN ======
 async function main() {
   const args = process.argv.slice(2);
@@ -301,8 +353,10 @@ Output disimpan di: downloads/<judul>/chapter-<num>/
     chapterData = await scrapeKomikuChapter(url);
   } else if (url.includes("kiryuu")) {
     chapterData = await scrapeKiryuuChapter(url);
+  } else if (url.includes("komikcast")) {
+    chapterData = await scrapeKomikcastChapter(url);
   } else {
-    console.log("🌐 Website belum didukung. Coba komiku.id atau kiryuu.co.");
+    console.log("🌐 Website belum didukung. Coba komiku.id, kiryuu.co, atau komikcast.cz.");
     console.log("Atau edit fungsi scrapeCustomChapter() untuk website lain.");
     process.exit(1);
   }
