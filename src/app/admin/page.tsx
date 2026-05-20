@@ -22,6 +22,7 @@ export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
   const [password, setPassword] = useState("");
   const [pwError, setPwError] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
   const [tab, setTab] = useState<"add" | "chapter" | "list">("add");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -73,12 +74,30 @@ export default function AdminPage() {
     }
   }, [authedPassword, fetchMangaList]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!password.trim()) return;
-    sessionStorage.setItem("admin_pw", password);
-    setAuthed(true);
-    setPassword("");
+    setLoginLoading(true);
+    setPwError("");
+    try {
+      const res = await fetch("/api/admin/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        sessionStorage.setItem("admin_pw", password);
+        setAuthed(true);
+        setPassword("");
+      } else {
+        setPwError("Password salah!");
+      }
+    } catch {
+      setPwError("Gagal koneksi ke server");
+    } finally {
+      setLoginLoading(false);
+    }
   };
 
   const handleLogout = () => {
@@ -308,16 +327,20 @@ export default function AdminPage() {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => { setPassword(e.target.value); setPwError(""); }}
             placeholder="Password admin"
             className="w-full h-10 px-4 rounded-lg bg-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary"
             autoFocus
           />
+          {pwError && (
+            <p className="text-sm text-red-500">{pwError}</p>
+          )}
           <button
             type="submit"
-            className="w-full h-10 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+            disabled={loginLoading}
+            className="w-full h-10 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            Masuk
+            {loginLoading ? "Memeriksa..." : "Masuk"}
           </button>
         </form>
       </div>
